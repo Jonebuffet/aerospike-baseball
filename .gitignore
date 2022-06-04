@@ -1,0 +1,11 @@
+.DS_Store
+.classpath
+.metadata
+.project
+org.eclipse.jdt.core.prefs
+org.eclipse.m2e.core.prefs
+target
+*.out
+*.log
+logs/*
+log

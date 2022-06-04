@@ -1,0 +1,11 @@
+
+dt=$(date +%Y.%m.%d-%H.%M.%S)
+
+cdir=$(pwd)
+app=$(basename $cdir)
+
+[ $# -gt 0 ] && dsc="-${1}"
+
+cd ..
+tar cvfz ~/tmp/${app}${dsc}-${dt}.tgz --exclude *target* --exclude log ${app}
+scp ~/tmp/${app}${dsc}-${dt}.tgz dave-as:tmp/.

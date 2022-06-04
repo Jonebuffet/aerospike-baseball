@@ -1,0 +1,4 @@
+
+log4j=src/main/resources/log4j.properties
+
+java -Dlog4j.configuration=file:"${log4j}" -jar target/aerospike-app-*-0.0.1-SNAPSHOT-full.jar "$@"

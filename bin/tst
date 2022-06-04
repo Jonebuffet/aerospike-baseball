@@ -1,0 +1,36 @@
+
+echo
+echo "#"
+echo "# Trunc Object1"
+echo "#"
+echo "bin/app -c trunc -set object1 $*"
+bin/app -c trunc -set object1 $*
+
+echo
+echo "#"
+echo "# Load Object1s"
+echo "#"
+echo "bin/app -c load --recCount 10 --recStartId 0 --threadCount 10 $*"
+bin/app -c load --recCount 10 --recStartId 0 --threadCount 10 $*
+
+echo
+echo "#"
+echo "# Scan Object1s"
+echo "#"
+echo "bin/app -c scan --limit 2 $*"
+bin/app -c scan --limit 2 $*
+
+echo
+echo "#"
+echo "# Put Object1"
+echo "#"
+echo "bin/app -c put -uk 0 -of1 "tst1" -of2 "b1" -otyp "T1" -oi1 1 -osl "str1,str2,str3" $*"
+bin/app -c put -uk 0 -of1 "tst1" -of2 "b1" -otyp "T1" -oi1 1 -osl "str1,str2,str3" $*
+
+echo
+echo "#"
+echo "# Get Object1"
+echo "#"
+echo "bin/app -c get -uk 0 $*"
+bin/app -c get -uk 0 $*
+
