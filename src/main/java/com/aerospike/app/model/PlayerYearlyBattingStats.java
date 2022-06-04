@@ -30,12 +30,13 @@ public class PlayerYearlyBattingStats {
     double slg;
     double ops;
     double ops_plus;
-    double batting_avg;
+    double batting_avg; 
     
 	public PlayerYearlyBattingStats(String playerid, int yearid, int ab, int bb, int cs, int doubles, int games,
-			int gidp, int hbp, int hits, int hr, double ba, int ibb, String lgid, int rbi, int runs, int sb, int sf,
+			int gidp, int hbp, int hits, int hr, int ibb, String lgid, int rbi, int runs, int sb, int sf,
 			int sh, int so, int stint, String teamid, int triples, double obp, double slg, double ops,
 			double ops_plus, double batting_avg) {
+		
 		super();
 		this.playerid = playerid;
 		this.yearid = yearid;
@@ -48,7 +49,7 @@ public class PlayerYearlyBattingStats {
 		this.hbp = hbp;
 		this.hits = hits;
 		this.hr = hr;
-		this.ba = ba;
+		this.ba = batting_avg;
 		this.ibb = ibb;
 		this.lgid = lgid;
 		this.rbi = rbi;

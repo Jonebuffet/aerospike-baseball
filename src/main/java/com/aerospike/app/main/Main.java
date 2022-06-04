@@ -93,7 +93,7 @@ public class Main {
         
       int counter=0;
       
-      String cmd = "get";
+      String cmd = "load";
 
       // Create Aero object
       as = new Aero(host, port);
@@ -104,7 +104,7 @@ public class Main {
         case "load":
           //as.load(ns, set, DATA_DIR_PATH + playerFile);
           //as.load(ns, set, DATA_DIR_PATH + playerYearlyBattingStatsFile);
-          as.load(ns, set, DATA_DIR_PATH + playerPostSeasonBattingStatsFile);
+          //as.load(ns, set, DATA_DIR_PATH + playerPostSeasonBattingStatsFile);
           break;
         /*
         case "scan":

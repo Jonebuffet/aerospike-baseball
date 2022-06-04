@@ -63,7 +63,7 @@ public class SerdePlayerYearlyBattingStats {
     binList.add(new Bin(HBP, pYearlyBattingStats.getHbp()));
     binList.add(new Bin(HITS, pYearlyBattingStats.getHits()));
     binList.add(new Bin(HR, pYearlyBattingStats.getHr()));
-    binList.add(new Bin(BA, pYearlyBattingStats.getBa()));
+   // binList.add(new Bin(BA, pYearlyBattingStats.getBa()));
     binList.add(new Bin(IBB, pYearlyBattingStats.getIbb()));
     binList.add(new Bin(LGID, pYearlyBattingStats.getLgid()));
     binList.add(new Bin(RBI, pYearlyBattingStats.getRbi()));
@@ -75,10 +75,10 @@ public class SerdePlayerYearlyBattingStats {
     binList.add(new Bin(STINT, pYearlyBattingStats.getStint()));
     binList.add(new Bin(TEAMID, pYearlyBattingStats.getTeamid()));
     binList.add(new Bin(TRIPLES, pYearlyBattingStats.getTriples()));
-    binList.add(new Bin(OBP, pYearlyBattingStats.getObp()));
-    binList.add(new Bin(SLG, pYearlyBattingStats.getSlg()));
-    binList.add(new Bin(OPS, pYearlyBattingStats.getOps()));
-    binList.add(new Bin(OPS_PLUS, pYearlyBattingStats.getOps_plus()));
+    //binList.add(new Bin(OBP, pYearlyBattingStats.getObp()));
+    //binList.add(new Bin(SLG, pYearlyBattingStats.getSlg()));
+    //binList.add(new Bin(OPS, pYearlyBattingStats.getOps()));
+    //binList.add(new Bin(OPS_PLUS, pYearlyBattingStats.getOps_plus()));
 
     return binList.toArray(new Bin[binList.size()]);
 
@@ -97,7 +97,7 @@ public class SerdePlayerYearlyBattingStats {
 	    int hbp				= record.getInt(HBP);
 	    int hits			= record.getInt(HITS);
 	    int hr				= record.getInt(HR);
-	    double ba			= record.getDouble(BA);
+	    double ba			= record.getDouble(BA_AVG);
 	    int ibb				= record.getInt(IBB);
 	    String lgid			= record.getString(LGID);
 	    int rbi				= record.getInt(RBI);
@@ -118,7 +118,7 @@ public class SerdePlayerYearlyBattingStats {
 
 
 	    return new PlayerYearlyBattingStats(playerid, yearid, ab, bb, cs, doubles, games,
-	    		gidp, hbp, hits, hr, ba, ibb, lgid, rbi, runs, sb, sf,
+	    		gidp, hbp, hits, hr, ibb, lgid, rbi, runs, sb, sf,
 	    		sh, so, stint, teamid, triples, obp, slg, ops,
 	    		ops_plus, batting_avg);
 
