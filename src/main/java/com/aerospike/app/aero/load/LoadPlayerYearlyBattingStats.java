@@ -99,9 +99,7 @@ public class LoadPlayerYearlyBattingStats {
 	  return sumCnt;
 	  
   }
-  
-  
-  
+
   private class LoadPlayerYearlyBattingStatsFileTask implements Runnable {
 
 	    Logger log = Logger.getLogger("LoadPlayerInfoFromFile.run");
@@ -165,7 +163,6 @@ public class LoadPlayerYearlyBattingStats {
 	      try {
 	    	  
 			while ((nextRecord = csvBattingReader.readNext()) != null) {
-			   
 				
 				//Instantiate PlayerInfo object
 				PlayerYearlyBattingStats plyStats = new PlayerYearlyBattingStats(nextRecord);

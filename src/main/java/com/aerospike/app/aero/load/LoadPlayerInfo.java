@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
 
 public class LoadPlayerInfo {
 
-  static Logger log = Logger.getLogger("LoadObject1");
+  static Logger log = Logger.getLogger("LoadPlayerInfo");
   
   private static final String DATA_DIR_PATH = "/Users/johnwalker/Development/projects/baseball/ProBaseballStats/data/2015/the-history-of-baseball/";
   private static final String playerFile = "player.csv";
@@ -69,7 +69,6 @@ public class LoadPlayerInfo {
 	      }
 			*/
 		  
-		  
 	      runnables[i] = new PlayerInfoLoadFileTask(client, ns, set, file + "." + Integer.toString(i+1));
 
 	      // new Thread(r).start();
@@ -96,8 +95,6 @@ public class LoadPlayerInfo {
 	  return sumCnt;
 	  
   }
-  
-  
   
   private class PlayerInfoLoadFileTask implements Runnable {
 

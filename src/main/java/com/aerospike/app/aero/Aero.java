@@ -29,7 +29,9 @@ import com.aerospike.client.AerospikeException.ScanTerminated;
 import com.aerospike.client.AerospikeException;
 import com.aerospike.client.Key;
 import com.aerospike.client.Record;
+import com.aerospike.client.query.RecordSet;
 import com.aerospike.client.policy.BatchPolicy;
+import com.aerospike.client.Host;
 import com.aerospike.client.policy.ClientPolicy;
 import com.aerospike.client.policy.CommitLevel;
 import com.aerospike.client.policy.InfoPolicy;
@@ -63,6 +65,8 @@ public class Aero {
   public SerdePlayerInfo serdePlayerInfo;
   public SerdePlayerYearlyBattingStats serdePlayerYearlyBattingStats;
   public SerdePlayerPostSeasonBattingStats serdePlayerPostSeasonBattingStats;
+  
+  public PlayerInfo plyInfo[];
   
   public long scanLimit = 0;
   public long scanCnt = 0;
@@ -134,31 +138,6 @@ public class Aero {
 
   } // connect
 
- /* 
-  public void put (String ns, String set, String ukey,
-                   String f1, String f2, String typ, int int1,
-                   String strLstStr) {
-
-    log.info(String.format("  ns\t\t\t%s\n"+
-                           "  set\t\t\t%s\n"+
-                           "  ukey\t\t\t%s\n",
-                           ns, set, ukey));
-
-    Object1.ObjType otyp = Object1.getObjType(typ);
-    List<String> strLst = new ArrayList<>();
-    for (String str : strLstStr.split(",")) {
-      strLst.add(str);
-    }
-
-    Object1 object1 = new Object1(f1, f2, otyp, int1, strLst);
-
-    opsObject1.put(ns, set, ukey, object1);
-
-    log.info(String.format("Wrote 1 record to %s.%s", ns, set));
-
-  } // put
-*/
-
   
   public void put (String ns, String set, String ukey, PlayerInfo pInfo) {
 
@@ -205,29 +184,6 @@ public class Aero {
 
 	  } // put
   
-  /*
-  public void put (String ns, String set, String ukey, PlayerInfo pInfo) {
-
-	log.info(String.format("  ns\t\t\t%s\n"+
-                  "  set\t\t\t%s\n"+
-                  "  ukey\t\t\t%s\n",
-                  ns, set, ukey));
-
-	Object1.ObjType otyp = Object1.getObjType(typ);
-	List<String> strLst = new ArrayList<>();
-	for (String str : strLstStr.split(",")) {
-		strLst.add(str);
-	}
-
-	Object1 object1 = new Object1(f1, f2, otyp, int1, strLst);
-
-	psPlayerInfo.put(ns, set, ukey, PlayerInfo);
-
-	log.info(String.format("Wrote 1 record to %s.%s", ns, set));
-
-} // put
-*/
-  
   public PlayerInfo	getPlayerInfo (String ns, String set, String ukey) {
 
     log.info(String.format("  ns\t\t\t%s\n"+
@@ -265,6 +221,17 @@ public class Aero {
 	return plBattingStats;
 
 } // get
+  
+public RecordSet searchPlayerInfo (String ns, String set, String searchStr) {
+
+		log.info(String.format("  ns\t\t\t%s\n"+
+		                       "  set\t\t\t%s\n"+
+		                       "  searchStr\t\t\t%s\n",
+		                       ns, set, searchStr));
+		
+	return opsPlayerInfo.search(ns, set, searchStr);
+
+} // search
 
   public void getBatch (String ns, String set, String ukeys) {
 

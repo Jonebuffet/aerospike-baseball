@@ -1,6 +1,9 @@
 package com.aerospike.app.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
+import com.aerospike.client.Record;
 
 
 public class PlayerInfo {
@@ -30,6 +33,7 @@ public class PlayerInfo {
     String retroid;
     String bbrefid;
     ArrayList<String> playerYearlyBattingStats;
+    ArrayList<String> playerPlayOffBattingStats;
 	
 	public enum ObjType {
 	    T1, T2, T3;
@@ -109,7 +113,7 @@ public class PlayerInfo {
 		this.retroid = retroid;
 		this.bbrefid = bbrefid;
 		
-		if (pybsId .length() > 0) {
+		if (pybsId.length() > 0) {
 			this.playerYearlyBattingStats = new ArrayList<String>();
 			this.playerYearlyBattingStats.add(pybsId);
 		}
@@ -183,6 +187,42 @@ public class PlayerInfo {
 		this.retroid = playerInfoRecord[22];
 		this.bbrefid = playerInfoRecord[23];
 		this.playerYearlyBattingStats = new ArrayList<String>();
+		
+	}
+	
+	public PlayerInfo(Record playerInfoRecord ) {
+		//super();
+		
+		this.playerid = playerInfoRecord.getString("pid");
+		this.birthyear = playerInfoRecord.getInt("byear");
+		this.birthmonth = playerInfoRecord.getInt("bmonth");
+        this.birthday = playerInfoRecord.getInt("bday");
+		this.birthcountry = playerInfoRecord.getString("bcntry");
+		this.birthstate = playerInfoRecord.getString("bstate");
+		this.birthcity = playerInfoRecord.getString("bcity");
+        this.deathyear = playerInfoRecord.getInt("dyear");
+        this.deathmonth = playerInfoRecord.getInt("dmonth");
+	    this.deathday = playerInfoRecord.getInt("dday");
+		this.deathcountry = playerInfoRecord.getString("dcntry");
+		this.deathstate = playerInfoRecord.getString("dstate");
+		this.deathcity = playerInfoRecord.getString("dcity");
+		this.namefirst = playerInfoRecord.getString("fname");
+		this.namelast = playerInfoRecord.getString("lname");
+		this.namegiven = playerInfoRecord.getString("gname");
+		this.weight = playerInfoRecord.getInt("wt");
+		this.height = playerInfoRecord.getInt("ht");
+		this.bats = playerInfoRecord.getString("bats");
+		this.arm = playerInfoRecord.getString("arm");
+		this.debut = playerInfoRecord.getString("debut");
+		this.finalgame = playerInfoRecord.getString("fgame");
+		this.retroid = playerInfoRecord.getString("retroid");
+		this.bbrefid = playerInfoRecord.getString("bbrefid");
+		this.playerYearlyBattingStats = new ArrayList<String>();
+		
+		if (playerInfoRecord.getList("pybsId").size() > 0) {
+			this.playerYearlyBattingStats = new ArrayList<String>();
+			this.playerYearlyBattingStats.addAll((Collection<? extends String>) playerInfoRecord.getList("pybsId"));
+		}
 		
 	}
 	

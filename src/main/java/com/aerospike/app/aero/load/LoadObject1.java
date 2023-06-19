@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit ;
 
 import org.apache.log4j.Logger;
 
-
 public class LoadObject1 {
 
   static Logger log = Logger.getLogger("LoadObject1");

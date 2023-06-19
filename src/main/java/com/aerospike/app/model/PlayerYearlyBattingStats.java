@@ -33,7 +33,7 @@ public class PlayerYearlyBattingStats {
     double batting_avg; 
     
 	public PlayerYearlyBattingStats(String playerid, int yearid, int ab, int bb, int cs, int doubles, int games,
-			int gidp, int hbp, int hits, int hr, int ibb, String lgid, int rbi, int runs, int sb, int sf,
+			int gidp, int hbp, int hits, int hr, double ba, int ibb, String lgid, int rbi, int runs, int sb, int sf,
 			int sh, int so, int stint, String teamid, int triples, double obp, double slg, double ops,
 			double ops_plus, double batting_avg) {
 		
@@ -152,7 +152,6 @@ public class PlayerYearlyBattingStats {
 		if (playerYearlyBattingStats[21].length() > 0) {
 			this.gidp = Integer.parseInt(playerYearlyBattingStats[21].substring(0, playerYearlyBattingStats[21].length() -2 ));
 		}
-		
 		
 		
 	}

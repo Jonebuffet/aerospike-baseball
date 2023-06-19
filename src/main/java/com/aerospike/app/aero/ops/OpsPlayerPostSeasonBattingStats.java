@@ -33,19 +33,6 @@ public class OpsPlayerPostSeasonBattingStats {
 
 
 	  public void put (String ns, String set, String ukey, PlayerPostSeasonBattingStats pPSBattingStats) {
-		  /* 
-		  Expression expBA =
-		    	      Exp.build(
-		    	                Exp.cond(
-		    	                         Exp.binExists(SerdePlayerPostSeasonBattingStats.BA),
-		    	                         Exp.cond(
-		    	                                  Exp.eq(Exp.val(0),
-		    	                                         Exp.intBin(SerdePlayerPostSeasonBattingStats.BA)),
-		    	                                  Exp.val(Integer.parseInt(SerdePlayerPostSeasonBattingStats.HITS) / Integer.parseInt(SerdePlayerPostSeasonBattingStats.AB)),
-		    	                         Exp.val(SerdePlayerPostSeasonBattingStats.BA))
-		    	                )
-		    );
-	        */
 		
 	    WritePolicy writePolicy = client.getWritePolicyDefault();
 	    Key key = new Key (ns, set, ukey);
@@ -96,14 +83,8 @@ public class OpsPlayerPostSeasonBattingStats {
 	    ops[onx++] = Operation.get(SerdePlayerPostSeasonBattingStats.SLG);
 	    ops[onx++] = Operation.get(SerdePlayerPostSeasonBattingStats.OPS);
 	    ops[onx++] = Operation.get(SerdePlayerPostSeasonBattingStats.OPS_PLUS);
-	    /*
-	    ops[onx++] = Operation.get(SerdePlayerInfo.FIELD1);
-	    ops[onx++] = Operation.get(SerdePlayerInfo.FIELD2);
-	    ops[onx++] = Operation.get(SerdePlayerInfo.OBJTYPE);
-	    ops[onx++] = Operation.get(SerdePlayerInfo.INT1);
-	    ops[onx++] = Operation.get(SerdePlayerInfo.STRLIST);
-	    ops[onx++] = ExpOperation.read("siz", expSiz, 0);
-	    */
+	    
+	    
 	    WritePolicy writePolicy = client.getWritePolicyDefault();
 	    Record record = client.operate(writePolicy, key, ops);
 	    // System.out.printf("dmf: record:%s\n", record);

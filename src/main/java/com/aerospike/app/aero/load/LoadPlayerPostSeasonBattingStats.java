@@ -23,7 +23,7 @@ import com.aerospike.client.policy.WritePolicy;
 import com.opencsv.CSVReader;
 
 public class LoadPlayerPostSeasonBattingStats {
-	  static Logger log = Logger.getLogger("LoadObject1");
+	  static Logger log = Logger.getLogger("PlayerPostSeasonBattingStats");
 	  
 	  private static final String DATA_DIR_PATH = "/Users/johnwalker/Development/projects/baseball/ProBaseballStats/data/2015/the-history-of-baseball/";
 	  private static final String playerYearlyBattingStatsFile = "batting.csv";
@@ -64,6 +64,7 @@ public class LoadPlayerPostSeasonBattingStats {
 		        addOne = 0;
 		      }
 				*/
+			  
 		      runnables[i] = new LoadPlayerPostSeasonBattingStatsFileTask(client, ns, set, file + "." + Integer.toString(i+1));
 
 		      // new Thread(r).start();
@@ -74,18 +75,18 @@ public class LoadPlayerPostSeasonBattingStats {
 		   } // for i
 		  
 		    for (Thread thread1 : threads) {
-		        try {
-		          thread1.join();
-		        } catch (Exception e) {
-		          System.out.printf("Error: %s\n\n", e);
-		          e.printStackTrace();
-		        }
-		      }
+		       try {
+		         thread1.join();
+		       } catch (Exception e) {
+		         System.out.printf("Error: %s\n\n", e);
+		         e.printStackTrace();
+		       }
+		    }
 
-		      long sumCnt = 0;
-		      for (int i=0; i<threadCnt; i++) {
-		        sumCnt += ((LoadPlayerPostSeasonBattingStatsFileTask)runnables[i]).getTotalCnt();
-		      }
+		    long sumCnt = 0;
+		    for (int i=0; i<threadCnt; i++) {
+		    	sumCnt += ((LoadPlayerPostSeasonBattingStatsFileTask)runnables[i]).getTotalCnt();
+		    }
 			
 		  return sumCnt;
 		  
@@ -155,8 +156,8 @@ public class LoadPlayerPostSeasonBattingStats {
 		      String[] nextRecord;
 		    
 		      try {
-				while ((nextRecord = csvBattingPSReader.readNext()) != null) {
-				   
+		    	  
+				while ((nextRecord = csvBattingPSReader.readNext()) != null) {				   
 					
 					//Instantiate PlayerInfo object
 					PlayerPostSeasonBattingStats plyPSStats = new PlayerPostSeasonBattingStats(nextRecord);
@@ -165,6 +166,7 @@ public class LoadPlayerPostSeasonBattingStats {
 
 					opsPlayerPostSeasonBattingStats.put(ns, "playerpostseasonbattingstats", plyPSStats.getPlayerid() + ":" + plyPSStats.getRound() + ":" + plyPSStats.getYearid(), plyPSStats);
 					this.totalCnt++;
+					
 					//PlayerInfo plInfo = opsPlayerInfo.get(ns, "playerinfo", plyStats.getPlayerid());
 					/*
 					if (plInfo == null) {

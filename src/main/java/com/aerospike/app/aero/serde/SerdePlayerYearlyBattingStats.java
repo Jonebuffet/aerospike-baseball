@@ -38,8 +38,8 @@ public class SerdePlayerYearlyBattingStats {
   static public String TEAMID   = "tmid";
   static public String TRIPLES  = "trpls";
   static public String BBREFID  = "bbrefid";
-  static public String OBP      = "obp";
-  static public String SLG      = "slg";
+  static public String OBP      = "onbase_pct";
+  static public String SLG      = "slugging_pct";
   static public String OPS      = "ops";
   static public String OPS_PLUS = "ops_plus";
   static public String BA_AVG	= "batting_avg";
@@ -111,15 +111,14 @@ public class SerdePlayerYearlyBattingStats {
 	    String leagueid		= record.getString(LGID);
 	    int triples			= record.getInt(TRIPLES);
 	    double obp 			= record.getDouble(OBP);
-	    double slg			= record.getDouble(SLG);
+	    double slg 			= record.getDouble(SLG);
 	    double ops			= record.getDouble(OPS);
 	    double ops_plus		= record.getDouble(OPS_PLUS);
 	    double batting_avg	= record.getDouble(BA_AVG);
 
-
 	    return new PlayerYearlyBattingStats(playerid, yearid, ab, bb, cs, doubles, games,
-	    		gidp, hbp, hits, hr, ibb, lgid, rbi, runs, sb, sf,
-	    		sh, so, stint, teamid, triples, obp, slg, ops,
+	    		gidp, hbp, hits, hr, ba, ibb, lgid, rbi, runs, sb, sf,
+	    		sh, so, stint, teamid, triples, obp, slg, obp+slg,
 	    		ops_plus, batting_avg);
 
 	} // deserialize
